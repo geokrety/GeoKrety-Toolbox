@@ -10,6 +10,7 @@
 
 // HISTORY
 // -------
+// 0.3.4     18 Apr 2018     Extract original cache coordinates from javascript
 // 0.3.3      8 Feb 2016     Site layout update
 // 0.3.2     18 Oct 2011     Site layout update
 // 0.3.1     13 May 2011     Site layout update
@@ -40,7 +41,7 @@
 
 
 var SUC_script_num = 59670,
-	VER = '0.3.3',
+	VER = '0.3.4',
 	DEBUG = false,
 	GKHOST = 'geokrety.org',
 	border_style = '1px solid #B0B0B0',
@@ -244,7 +245,7 @@ function init() {
 			else { gcwaypoint=''; cond1=false; debug('Waypoint not found');}
 
 		debug('Searching for coordinates...');
-		if (document.getElementById('uxLatLon').textContent.match(/([NS])\s(\d{1,3}).\s(\d{1,2})\.(\d{3})\s([EW])\s(\d{1,3}).\s(\d{1,2})\.(\d{3})/)) { cond2=true; debug('Coordinates found'); }
+		if (document.getElementById('ctl00_hlSkipLinksTop').nextElementSibling.textContent.match(/oldLatLngDisplay":"([NS])\s(\d{1,3}).\s(\d{1,2})\.(\d{3}).\s([EW])\s(\d{1,3}).\s(\d{1,2})\.(\d{3})."/)) { cond2=true; debug('Coordinates found'); }
 			else { cond2=false; debug('Coordinates not found'); }
 
 		if ( !cond1 || !cond2 ) {
