@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name	GeoKrety Toolbox
-// @version	0.3.3
+// @version	0.3.4
 // @copyright	©2016, simor
 // @namespace	http://simor.net/greasemonkey/
-// @description	(v0.3.3) Shows GeoKrety trackables on geocaching.com cache pages and facilitates dropping GK trackables into GC caches.
+// @description	(v0.3.4) Shows GeoKrety trackables on geocaching.com cache pages and facilitates dropping GK trackables into GC caches.
 // @include http://www.geocaching.com/geocache/GC*
 // @include https://www.geocaching.com/geocache/GC*
 // ==/UserScript==
