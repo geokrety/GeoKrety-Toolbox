@@ -1,15 +1,16 @@
 // ==UserScript==
 // @name	GeoKrety Toolbox
-// @version	0.3.5
+// @version	0.3.6
 // @copyright	©2016, simor
 // @namespace	http://simor.net/greasemonkey/
-// @description	(v0.3.5) Shows GeoKrety trackables on geocaching.com cache pages and facilitates dropping GK trackables into GC caches.
+// @description	(v0.3.6) Shows GeoKrety trackables on geocaching.com cache pages and facilitates dropping GK trackables into GC caches.
 // @include http://www.geocaching.com/geocache/GC*
 // @include https://www.geocaching.com/geocache/GC*
 // ==/UserScript==
 
 // HISTORY
 // -------
+// 0.3.6     25 Mar 2019     FIx document.evaluate() parameters (Issue: #3)
 // 0.3.5     12 Jan 2019     Site layout update
 // 0.3.4     18 Apr 2018     Extract original cache coordinates from javascript
 // 0.3.3      8 Feb 2016     Site layout update
@@ -42,7 +43,7 @@
 
 
 var SUC_script_num = 59670,
-	VER = '0.3.5',
+	VER = '0.3.6',
 	DEBUG = false,
 	GKHOST = 'geokrety.org',
 	border_style = '1px solid #B0B0B0',
@@ -246,7 +247,7 @@ function init() {
 			else { gcwaypoint=''; cond1=false; debug('Waypoint not found');}
 
 		debug('Searching for coordinates...');
-		if (document.evaluate("//script[contains(., 'MapTilesEnvironment')]").iterateNext().textContent.match(/oldLatLngDisplay":"([NS])\s(\d{1,3}).\s(\d{1,2})\.(\d{3}).\s([EW])\s(\d{1,3}).\s(\d{1,2})\.(\d{3})."/)) { cond2=true; debug('Coordinates found'); }
+		if (document.evaluate("//script[contains(., 'MapTilesEnvironment')]", document).iterateNext().textContent.match(/oldLatLngDisplay":"([NS])\s(\d{1,3}).\s(\d{1,2})\.(\d{3}).\s([EW])\s(\d{1,3}).\s(\d{1,2})\.(\d{3})."/)) { cond2=true; debug('Coordinates found'); }
 			else { cond2=false; debug('Coordinates not found'); }
 
 		if ( !cond1 || !cond2 ) {
